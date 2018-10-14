@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { resolve } from 'path';
 import { rejects } from 'assert';
+import { environment } from '../../environments/environment';
 
 //let inputFieldData = document.querySelector('.search__input');
 
@@ -23,9 +24,10 @@ function getAllComponents() {
     //     "visiable": true }
     // ]
 }
+//'http://151.80.70.43:8080/skin-expert/find-component/'+letters
 function findComponents(letters) {
     return new Promise(function(resolve) {
-        return axios.get('http://151.80.70.43:8080/skin-expert/find-component/'+letters).then((data) => {
+        return axios.get(`${environment.api}/skin-expert/find-component/${letters}`).then((data) => {           
             resolve(data)
         })
     })
